@@ -1,10 +1,13 @@
-#!/usr/bin/env python3
+#! /usr/bin/env python
 
 import sys
 import os.path
 
-
-if len(sys.argv) < 2:
+version = os.getenv('PYTHON_BIN')
+if version != 'python2' and version != 'python3':
+	sys.stdout.write('exec: {}: not found\n'.format(version))
+	sys.exit(-1)
+elif len(sys.argv) < 2:
     sys.stdout.write('missing file name\n')
 elif len(sys.argv) > 2:
     sys.stdout.write('only one argument is allowed\n')
